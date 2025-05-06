@@ -1,15 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        List<String>nume = new ArrayList<String>();
+        nume.add("Nenea");
+        nume.add("Ion");
+        nume.add("Dumniezo");
+        nume.add("Bahoi");
+        for(String num : nume){
+            System.out.println(num);
+        }//1
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        nume.stream().filter(num -> num.length()>3).forEach(num -> System.out.println(num));//2
+
+
+        int sum = nume.stream().mapToInt(num -> num.length()).sum();
+        System.out.println("suma" + sum);
+
+        String concatenated = nume.stream().map(num -> num.concat(num)).collect(Collectors.joining(", "));
+        System.out.println(concatenated);
+
+//        nume.stream().filter(num -> num.length()<5).forEach(num -> System.out.println(num)));
+//        nume.stream().mapToInt(num -> num.length()).sum();
     }
 }
